@@ -20,14 +20,14 @@ const taskFilterList = ref([
   TodoTaskStatusFilter.todo,
   TodoTaskStatusFilter.done
 ]);
-const selectedResponsible: Nullable<IResponsible> = ref(null);
+const selectedResponsible = ref<Nullable<IResponsible>>(null);
 
 const filteredTasks = computed<ITask[]>(() => {
   let filtered: ITask[];
 
   if (selectedResponsible.value) {
     filtered = tasks.filter(
-      (task) => task.responsible.id === selectedResponsible.value.id
+      (task) => task.responsible.id === selectedResponsible?.value?.id
     );
   } else {
     filtered = tasks;
